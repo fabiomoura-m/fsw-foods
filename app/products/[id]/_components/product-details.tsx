@@ -1,8 +1,17 @@
 "use client";
+import Cart from "@/app/_components/cart";
 import DeliveryInfo from "@/app/_components/delivery-info";
 import DiscountBadge from "@/app/_components/discount-badge";
 import ProductList from "@/app/_components/product-list";
 import { Button } from "@/app/_components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/app/_components/ui/sheet";
+import { CartContext } from "@/app/_context/carts";
 import {
   calculateProductTotalPrice,
   formatCurrency,
@@ -10,7 +19,7 @@ import {
 import { Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
@@ -30,6 +39,11 @@ const ProductDetails = ({
   complementaryProducts,
 }: ProductDetailsProps) => {
   const [quantity, setQuantity] = useState(1);
+  const { addProductToCart } = useContext(CartContext);
+
+  const handleAddToCartClick = () => {
+    addProductToCart(product, quantity);
+  };
 
   const handleIncreaseQuantityClick = () => {
     setQuantity((current) => current + 1);
@@ -108,11 +122,24 @@ const ProductDetails = ({
         <ProductList products={complementaryProducts} />
       </div>
 
-      <div className="px-5">
-        <Button className="w-full text-sm font-semibold">
-          Adicionar à Sacola
-        </Button>
-      </div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <div className="px-5">
+            <Button
+              className="w-full text-sm font-semibold"
+              onClick={handleAddToCartClick}
+            >
+              Adicionar à Sacola
+            </Button>
+          </div>
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle className="text-left">Sacola</SheetTitle>
+          </SheetHeader>
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </div>
   );
 };
