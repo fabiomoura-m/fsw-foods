@@ -133,7 +133,7 @@ const ProductDetails = ({
             </Button>
           </div>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="w-[90vw]">
           <SheetHeader>
             <SheetTitle className="text-left">Sacola</SheetTitle>
           </SheetHeader>
