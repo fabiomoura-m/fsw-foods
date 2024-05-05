@@ -9,16 +9,16 @@ import { Button } from "./ui/button";
 const Cart = () => {
   const { products, totalDiscounts, totalPrice, subtotalPrice } =
     useContext(CartContext);
-  return (
-    <div className="flex h-full flex-col justify-between py-5">
-      <div className="space-y-4">
-        {products.map((product) => (
-          <CartItem cartProduct={product} key={product.id} />
-        ))}
-      </div>
 
-      {products.length > 0 && (
-        <div className="">
+  return (
+    <div className="flex h-full flex-col py-5">
+      {products.length > 0 ? (
+        <>
+          <div className="flex-auto space-y-4">
+            {products.map((product) => (
+              <CartItem cartProduct={product} key={product.id} />
+            ))}
+          </div>
           <div className="mt-6">
             <Card>
               <CardContent className="space-y-2 p-5">
@@ -35,7 +35,9 @@ const Cart = () => {
                     <span className="uppercase text-primary">Grátis</span>
                   ) : (
                     <span>
-                      {Number(products[0].restaurant.deliveryFee)} min
+                      {formatCurrency(
+                        Number(products[0].restaurant.deliveryFee),
+                      )}
                     </span>
                   )}
                 </div>
@@ -57,7 +59,11 @@ const Cart = () => {
             </Card>
           </div>
           <Button className="mt-6 w-full">Finalizar Pedido</Button>
-        </div>
+        </>
+      ) : (
+        <h2 className="text-center text-sm font-semibold">
+          Sua sacola está vazia.
+        </h2>
       )}
     </div>
   );
