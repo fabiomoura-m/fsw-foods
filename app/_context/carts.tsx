@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 "use client";
 
-import { Prisma, Product } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ReactNode, createContext, useMemo, useState } from "react";
 import { calculateProductTotalPrice } from "../_helpers/price";
 
@@ -10,7 +10,9 @@ export interface CartProduct
     include: {
       restaurant: {
         select: {
+          id: true;
           deliveryFee: true;
+          deliveryTimeMinutes: true;
         };
       };
     };
@@ -33,7 +35,9 @@ interface ICartContext {
       include: {
         restaurant: {
           select: {
+            id: true;
             deliveryFee: true;
+            deliveryTimeMinutes: true;
           };
         };
       };
@@ -44,19 +48,10 @@ interface ICartContext {
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
+  clearCart: () => void;
 }
 
-export const CartContext = createContext<ICartContext>({
-  products: [],
-  subtotalPrice: 0,
-  totalPrice: 0,
-  totalDiscounts: 0,
-  totalQuantity: 0,
-  addProductToCart: () => {},
-  decreaseProductQuantity: () => {},
-  increaseProductQuantity: () => {},
-  removeProductFromCart: () => {},
-});
+export const CartContext = createContext<ICartContext>({} as ICartContext);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
@@ -93,7 +88,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       include: {
         restaurant: {
           select: {
+            id: true;
             deliveryFee: true;
+            deliveryTimeMinutes: true;
           };
         };
       };
@@ -128,6 +125,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
     // se não estiver, adiciona o produto
     setProducts((prev) => [...prev, { ...product, quantity: quantity }]);
+  };
+
+  const clearCart = () => {
+    setProducts([]);
   };
 
   const decreaseProductQuantity = (productId: string) => {
@@ -182,6 +183,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         totalDiscounts,
         totalPrice,
         totalQuantity,
+        clearCart,
       }}
     >
       {children}
