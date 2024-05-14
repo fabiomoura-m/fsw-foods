@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FSW Foods
 
-## Getting Started
+Um sistema completo de delivery para restaurantes (estilo iFood) com tela de restaurantes, gerenciamento de pedidos, restaurantes favoritos, carrinho de compras, autenticação com o Google e Github (OAuth).
 
-First, run the development server:
+Este projeto foi feito durante a 4ª edição da Full Stack Week, um evento organizado pelo Felipe Rocha (@dicasparadevs). Você pode encontrar mais informações sobre o evento no [YouTube](https://www.youtube.com/@dicasparadevs).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<img src="https://i.imgur.com/YhUgPtM.png" width="1920"/>
+
+## 🗒️ Diagrama ERD
+
+<img src="https://i.imgur.com/btI7FA5.png" width="1920"/>
+
+
+## 💡 Tecnologias:
+
+- `Typescript`
+- `React`
+- `Next - 14`
+- `PostgresSQL`
+- `Prisma`
+- `Tailwind CSS`
+
+## ⚙️ Como rodar o Projeto Localmente:
+
+-Clone o repositório
+
+```
+$ git clone https://github.com/fabiomoura-m/fsw-foods.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-Para instalar todas as bibliotecas usadas no projeto rode o comando:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-Crie e configure as variáveis de ambiente no arquivo .env
 
-## Learn More
+```
+DATABASE_URL=""
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GITHUB_ID=""
+GITHUB_SECRET=""
+NEXTAUTH_SECRET=""
+```
 
-To learn more about Next.js, take a look at the following resources:
+-Para inicializar o prisma: (Após conectar com o Banco)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npx prisma db push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-Rodar arquivo seed:
 
-## Deploy on Vercel
+```
+npx prisma db seed
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-Para rodar o app:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm run dev
+```
+
+## 🔗 Link do Projeto:
+
+[fsw-foods.app](https://fsw-foods-pi.vercel.app/)
+
