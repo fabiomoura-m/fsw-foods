@@ -9,8 +9,8 @@ import PromoBanner from "./_components/promo-banner";
 import RestaurantList from "./_components/restaurant-list";
 import Link from "next/link";
 
-export default async function Home() {
-  const products = await db.product.findMany({
+const fetch = async () => {
+  const getProducts = await db.product.findMany({
     where: {
       discountPercentage: {
         gt: 0,
@@ -26,6 +26,30 @@ export default async function Home() {
     take: 10,
   });
 
+  const getBurguerCategory = await db.category.findFirst({
+    where: {
+      name: "Hambúrgueres",
+    },
+  });
+
+  const getPizzasCategory = await db.category.findFirst({
+    where: {
+      name: "Pizzas",
+    },
+  });
+
+  const [products, burguerCategory, pizzasCategory] = await Promise.all([
+    getProducts,
+    getBurguerCategory,
+    getPizzasCategory,
+  ]);
+
+  return { products, burguerCategory, pizzasCategory };
+};
+
+export default async function Home() {
+  const { products, burguerCategory, pizzasCategory } = await fetch();
+
   return (
     <>
       <Header />
@@ -37,10 +61,12 @@ export default async function Home() {
       </div>
 
       <div className="px-5 pt-6">
-        <PromoBanner
-          src="/promo-banner-01.png"
-          alt="Até 30% de desconto em pizzas"
-        />
+        <Link href={`/categories/${pizzasCategory?.id}/products`}>
+          <PromoBanner
+            src="/promo-banner-01.png"
+            alt="Até 30% de desconto em pizzas"
+          />
+        </Link>
       </div>
 
       <div className="space-y-4 pt-6">
@@ -61,10 +87,12 @@ export default async function Home() {
       </div>
 
       <div className="px-5 pt-6">
-        <PromoBanner
-          src="/promo-banner-02.png"
-          alt="A partir de R$17,90 em lanches"
-        />
+        <Link href={`/categories/${burguerCategory?.id}/products`}>
+          <PromoBanner
+            src="/promo-banner-02.png"
+            alt="A partir de R$17,90 em lanches"
+          />
+        </Link>
       </div>
 
       <div className="space-y-4 py-6">
