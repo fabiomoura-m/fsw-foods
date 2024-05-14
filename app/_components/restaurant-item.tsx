@@ -38,9 +38,11 @@ const RestaurantItem = ({
           <Link href={`/restaurants/${restaurant.id}`}>
             <Image
               src={restaurant.imageUrl}
-              fill
+              width={0}
+              height={0}
+              sizes="100%"
               alt={restaurant.name}
-              className="rounded-lg object-cover"
+              className="h-full w-full rounded-lg object-cover"
             />
           </Link>
           <div className="absolute left-2 top-2 flex items-center gap-[2px] rounded-full bg-white px-2 py-[2px]">

@@ -33,10 +33,12 @@ const CartItem = ({ cartProduct }: CartItemProps) => {
       <div className="flex items-center gap-4">
         <div className="relative h-20 w-20">
           <Image
+            loading={"lazy"}
             src={cartProduct.imageUrl}
             fill
             alt={cartProduct.name}
             className="rounded-lg object-cover"
+            sizes="100%"
           />
         </div>
         <div className="space-y-1">

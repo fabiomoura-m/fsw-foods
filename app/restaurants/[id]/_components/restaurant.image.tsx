@@ -39,6 +39,7 @@ const RestaurantImage = ({
       <Image
         src={restaurant.imageUrl}
         fill
+        sizes="100%"
         alt={restaurant.name}
         className="object-cover"
       />
