@@ -37,6 +37,8 @@ const MyOrdersPage = async () => {
             <OrderItem order={order} key={order.id} />
           ))}
         </div>
+
+        {orders.length === 0 && <h3>Você ainda não fez nenhum pedido.</h3>}
       </div>
     </>
   );
