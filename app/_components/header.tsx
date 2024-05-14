@@ -85,13 +85,15 @@ const Header = () => {
             <Separator />
           </div>
           <div className="space-y-1">
-            <Button
-              variant="ghost"
-              className="w-full justify-start gap-3 rounded-full text-sm font-normal"
-            >
-              <HomeIcon size={16} />
-              Início
-            </Button>
+            <Link href="/">
+              <Button
+                variant="ghost"
+                className="w-full justify-start gap-3 rounded-full text-sm font-normal"
+              >
+                <HomeIcon size={16} />
+                Início
+              </Button>
+            </Link>
             {status === "authenticated" && data.user && (
               <>
                 <Button
