@@ -19,14 +19,28 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
 
 const Header = () => {
   const { data, status } = useSession();
 
-  const handleLoginClick = () => {
-    signIn();
+  const handleLoginGithubClick = () => {
+    signIn("github");
+  };
+
+  const handleLoginGoogleClick = () => {
+    signIn("google");
   };
 
   const handleLogoutClick = () => {
@@ -76,9 +90,41 @@ const Header = () => {
           ) : (
             <div className="flex items-center justify-between pt-6">
               <h2 className="font-semibold">Olá. Faça seu login!</h2>
-              <Button size="icon" onClick={handleLoginClick}>
-                <LogInIcon />
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="icon">
+                    <LogInIcon />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="w-[90vw] rounded-lg">
+                  <DialogHeader>
+                    <DialogTitle className="text-base">
+                      Faça login na plataforma!
+                    </DialogTitle>
+                    <DialogDescription>
+                      Conecte-se usando sua conta do Google ou Github.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter className="flex flex-row items-center justify-center gap-3">
+                    <Button
+                      variant="ghost"
+                      className="border border-solid border-primary text-sm font-semibold text-primary"
+                      onClick={handleLoginGithubClick}
+                    >
+                      <FaGithub className="mr-2" />
+                      Github
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      className="border border-solid border-primary text-sm font-semibold text-primary"
+                      onClick={handleLoginGoogleClick}
+                    >
+                      <FaGoogle className="mr-2" />
+                      Google
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
           )}
           <div className="py-6">
