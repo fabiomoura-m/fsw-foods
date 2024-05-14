@@ -69,6 +69,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       <RestaurantImage
         restaurant={restaurant}
         userFavoriteRestaurants={userFavoriteRestaurants}
+        session={session?.user.id}
       />
 
       <div className="relative z-30 mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-white px-5 pt-5">
