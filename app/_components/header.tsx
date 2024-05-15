@@ -31,8 +31,13 @@ import {
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
+import Search from "./search";
 
-const Header = () => {
+interface HeaderProps {
+  hasSearch?: boolean;
+}
+
+const Header = ({ hasSearch }: HeaderProps) => {
   const { data, status } = useSession();
 
   const handleLoginGithubClick = () => {
@@ -59,6 +64,11 @@ const Header = () => {
           />
         </div>
       </Link>
+      {hasSearch && (
+        <div className="hidden lg:block lg:min-w-[600px]">
+          <Search />
+        </div>
+      )}
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon">
