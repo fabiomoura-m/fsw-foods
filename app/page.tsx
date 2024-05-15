@@ -88,7 +88,7 @@ export default async function Home() {
         <CategoryList />
       </div>
 
-      <div className="px-5 pt-6">
+      <div className="px-5 pt-6 lg:hidden">
         <Link href={`/categories/${pizzasCategory?.id}/products`}>
           <PromoBanner
             src="/promo-banner-01.png"
@@ -97,8 +97,8 @@ export default async function Home() {
         </Link>
       </div>
 
-      <div className="space-y-4 pt-6">
-        <div className="flex items-center justify-between px-5">
+      <div className="space-y-4 pt-6 lg:container">
+        <div className="flex items-center justify-between px-5 lg:px-0">
           <h2 className="font-semibold">Pedidos Recomendados</h2>
           <Button
             variant="ghost"
