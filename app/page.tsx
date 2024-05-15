@@ -84,11 +84,11 @@ export default async function Home() {
       <div className="px-5 pt-6 lg:hidden">
         <Search />
       </div>
-      <div className="px-5 pt-6 lg:container">
+      <div className="px-5 pt-6 lg:container lg:pt-10">
         <CategoryList />
       </div>
 
-      <div className="px-5 pt-6 lg:hidden">
+      <div className="px-5 pt-6 lg:hidden  lg:pt-10">
         <Link href={`/categories/${pizzasCategory?.id}/products`}>
           <PromoBanner
             src="/promo-banner-01.png"
@@ -97,7 +97,7 @@ export default async function Home() {
         </Link>
       </div>
 
-      <div className="space-y-4 pt-6 lg:container">
+      <div className="space-y-4 pt-6 lg:container lg:pt-10">
         <div className="flex items-center justify-between px-5 lg:px-0">
           <h2 className="font-semibold">Pedidos Recomendados</h2>
           <Button
@@ -114,7 +114,7 @@ export default async function Home() {
         <ProductList products={products} />
       </div>
 
-      <div className="px-5 pt-6 lg:container lg:flex lg:gap-5">
+      <div className="px-5 pt-6 lg:container lg:flex lg:gap-5 lg:pt-10">
         <Link
           href={`/categories/${pizzasCategory?.id}/products`}
           className="hidden lg:block lg:flex-1"
@@ -135,7 +135,7 @@ export default async function Home() {
         </Link>
       </div>
 
-      <div className="space-y-4 py-6 lg:container">
+      <div className="space-y-4 py-6 lg:container lg:py-10">
         <div className="flex items-center justify-between px-5 lg:px-0">
           <h2 className="font-semibold">Restaurantes Recomendados</h2>
           <Button
