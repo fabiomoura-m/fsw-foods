@@ -114,8 +114,20 @@ export default async function Home() {
         <ProductList products={products} />
       </div>
 
-      <div className="px-5 pt-6">
-        <Link href={`/categories/${burguerCategory?.id}/products`}>
+      <div className="px-5 pt-6 lg:container lg:flex lg:gap-5">
+        <Link
+          href={`/categories/${pizzasCategory?.id}/products`}
+          className="hidden lg:block lg:flex-1"
+        >
+          <PromoBanner
+            src="/promo-banner-01.png"
+            alt="Até 30% de desconto em pizzas"
+          />
+        </Link>
+        <Link
+          href={`/categories/${burguerCategory?.id}/products`}
+          className="lg:flex-1"
+        >
           <PromoBanner
             src="/promo-banner-02.png"
             alt="A partir de R$17,90 em lanches"
