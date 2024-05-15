@@ -8,6 +8,8 @@ import { db } from "./_lib/prisma";
 import PromoBanner from "./_components/promo-banner";
 import RestaurantList from "./_components/restaurant-list";
 import Link from "next/link";
+import Image from "next/image";
+import SearchDesktop from "./_components/search-desktop";
 
 const fetch = async () => {
   const getProducts = await db.product.findMany({
@@ -53,7 +55,33 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <div className="px-5 pt-6">
+      <div className="hidden h-[500px] bg-primary lg:block">
+        <div className="container flex h-full items-center justify-between">
+          <div className="flex-1 text-white">
+            <h2 className="text-5xl font-bold">Está com fome?</h2>
+            <p className="text-lg">
+              Com apenas alguns cliques, encontre refeições acessíveis perto de
+              você.
+            </p>
+            <div className="mt-6">
+              <SearchDesktop />
+            </div>
+          </div>
+          <div className="flex flex-1 items-end justify-end self-end">
+            <div className="h-[300px] w-fit">
+              <Image
+                src="/img-home-desktop.png"
+                alt="Prato de comida"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="h-full w-auto object-cover "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="px-5 pt-6 lg:hidden">
         <Search />
       </div>
       <div className="px-5 pt-6">
