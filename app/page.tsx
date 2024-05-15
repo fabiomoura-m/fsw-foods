@@ -135,8 +135,8 @@ export default async function Home() {
         </Link>
       </div>
 
-      <div className="space-y-4 py-6">
-        <div className="flex items-center justify-between px-5">
+      <div className="space-y-4 py-6 lg:container">
+        <div className="flex items-center justify-between px-5 lg:px-0">
           <h2 className="font-semibold">Restaurantes Recomendados</h2>
           <Button
             variant="ghost"

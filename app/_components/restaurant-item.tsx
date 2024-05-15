@@ -33,8 +33,13 @@ const RestaurantItem = ({
 
   return (
     <div>
-      <div className={cn("min-w-[266px] max-w-[266px] space-y-3", className)}>
-        <div className="relative h-[136px] w-full">
+      <div
+        className={cn(
+          "min-w-[266px] max-w-[266px] space-y-3 lg:min-w-[320px] lg:max-w-[320px]",
+          className,
+        )}
+      >
+        <div className="relative h-[136px] w-full lg:h-[165px]">
           <Link href={`/restaurants/${restaurant.id}`}>
             <Image
               src={restaurant.imageUrl}
