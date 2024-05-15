@@ -84,7 +84,7 @@ export default async function Home() {
       <div className="px-5 pt-6 lg:hidden">
         <Search />
       </div>
-      <div className="px-5 pt-6">
+      <div className="px-5 pt-6 lg:container">
         <CategoryList />
       </div>
 
