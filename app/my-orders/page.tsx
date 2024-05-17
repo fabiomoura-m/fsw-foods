@@ -28,8 +28,10 @@ const MyOrdersPage = async () => {
 
   return (
     <>
-      <Header />
-      <div className="px-5 py-6">
+      <div className="lg:border-b">
+        <Header hasSearch={true} />
+      </div>
+      <div className="px-5 py-6 lg:container lg:py-10">
         <h2 className="text-lg font-semibold">Meus pedidos</h2>
 
         <div className="space-y-3 pt-6">
