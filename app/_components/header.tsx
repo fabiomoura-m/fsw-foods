@@ -108,14 +108,14 @@ const Header = ({ hasSearch }: HeaderProps) => {
                 </DialogTrigger>
                 <DialogContent className="w-[90vw] rounded-lg">
                   <DialogHeader>
-                    <DialogTitle className="text-base">
+                    <DialogTitle className="text-center text-base">
                       Faça login na plataforma!
                     </DialogTitle>
-                    <DialogDescription>
+                    <DialogDescription className="text-center">
                       Conecte-se usando sua conta do Google ou Github.
                     </DialogDescription>
                   </DialogHeader>
-                  <DialogFooter className="flex flex-row items-center justify-center gap-3">
+                  <DialogFooter className="flex flex-row items-center justify-center gap-3 lg:justify-center">
                     <Button
                       variant="ghost"
                       className="border border-solid border-primary text-sm font-semibold text-primary"
