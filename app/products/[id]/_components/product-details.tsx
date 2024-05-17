@@ -2,7 +2,6 @@
 import Cart from "@/app/_components/cart";
 import DeliveryInfo from "@/app/_components/delivery-info";
 import DiscountBadge from "@/app/_components/discount-badge";
-import ProductList from "@/app/_components/product-list";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,6 +28,7 @@ import { Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import { useContext, useState } from "react";
+import ProductsComplementary from "./products-complementary";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
@@ -87,8 +87,8 @@ const ProductDetails = ({
   };
   return (
     <>
-      <div className="relative z-50 mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-white py-5">
-        <div className="px-5">
+      <div className="relative z-50 mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-white py-5 lg:ml-8 lg:mt-0 lg:rounded-3xl lg:border lg:p-8 lg:py-8">
+        <div className="px-5 lg:px-0">
           <div className="flex items-center gap-[0.375rem]">
             <div className="relative h-6 w-6">
               <Image
@@ -148,12 +148,13 @@ const ProductDetails = ({
           </div>
         </div>
 
-        <div className="my-6">
-          <h3 className="mb-3 px-5 font-semibold">Sucos</h3>
-          <ProductList products={complementaryProducts} />
+        <div className="my-6 lg:hidden">
+          <ProductsComplementary
+            complementaryProducts={complementaryProducts}
+          />
         </div>
 
-        <div className="px-5">
+        <div className="px-5 lg:px-0 lg:pl-8">
           <Button
             className="w-full text-sm font-semibold"
             onClick={handleAddToCartClick}
