@@ -40,7 +40,10 @@ const Cart = ({ setIsOpen }: CartProps) => {
     useContext(CartContext);
 
   const handleFinishOrderClick = async () => {
-    if (!data?.user) return;
+    if (!data?.user) {
+      toast.error("É necessário fazer o login para efetuar um pedido!");
+      return;
+    }
 
     const restaurant = products[0].restaurant;
 
@@ -161,13 +164,15 @@ const Cart = ({ setIsOpen }: CartProps) => {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Deseja finalizar seu pedido?</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle className="lg:text-center">
+              Deseja finalizar seu pedido?
+            </AlertDialogTitle>
+            <AlertDialogDescription className="lg:text-center">
               Ao finalizar seu pedido, você concorda com os termos de condições
               da nossa plataforma.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
+          <AlertDialogFooter className="lg:justify-center">
             <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction onClick={handleFinishOrderClick}>
               {isSubmitLoading && (
