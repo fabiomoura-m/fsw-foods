@@ -87,7 +87,7 @@ const ProductDetails = ({
   };
   return (
     <>
-      <div className="relative z-50 mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-white py-5 lg:ml-8 lg:mt-0 lg:rounded-3xl lg:border lg:p-8 lg:py-8">
+      <div className="relative z-50 mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-white py-5 lg:ml-8 lg:mt-0 lg:flex lg:h-full lg:flex-col lg:rounded-3xl lg:border lg:p-8 lg:py-8">
         <div className="px-5 lg:px-0">
           <div className="flex items-center gap-[0.375rem]">
             <div className="relative h-6 w-6">
@@ -154,7 +154,7 @@ const ProductDetails = ({
           />
         </div>
 
-        <div className="px-5 lg:px-0 lg:pl-8">
+        <div className="px-5 lg:mt-auto lg:px-0">
           <Button
             className="w-full text-sm font-semibold"
             onClick={handleAddToCartClick}
