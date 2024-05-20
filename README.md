@@ -1,8 +1,10 @@
 # FSW Foods
 
-Um sistema completo de delivery para restaurantes (estilo iFood) com tela de restaurantes, gerenciamento de pedidos, restaurantes favoritos, carrinho de compras, autenticação com o Google e Github (OAuth).
+Um sistema completo de delivery para restaurantes (estilo iFood) com tela de restaurantes, gerenciamento de pedidos, restaurantes favoritos, carrinho de compras, autenticação com o Google (OAuth).
 
 Este projeto foi feito durante a 4ª edição da Full Stack Week, um evento organizado pelo Felipe Rocha (@dicasparadevs). Você pode encontrar mais informações sobre o evento no [YouTube](https://www.youtube.com/@dicasparadevs).
+
+No evento foi realizado a versão mobile do projeto. Desenvolvi a versão desktop de acordo com o figma proposto, e adicionei o login com o Github.
 
 <img src="https://i.imgur.com/YhUgPtM.png" width="1920"/>
 
