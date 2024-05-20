@@ -29,7 +29,7 @@ const CartBanner = ({ restaurant }: CartBannerProps) => {
 
   return (
     <div className="fixed bottom-0 left-0 z-40 w-full border-t border-solid border-muted bg-white p-5 pt-3 shadow-md">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between lg:container lg:justify-start lg:gap-12">
         <div>
           <span className="text-xs text-muted-foreground">
             Total sem entrega
